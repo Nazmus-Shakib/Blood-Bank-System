@@ -13,6 +13,9 @@ const Header = () => {
         </Navbar.Brand>
         <Nav className="ml-auto mr-4">
           <Nav.Link className="navs" href="">
+            <Link to="/home">Home</Link>
+          </Nav.Link>
+          <Nav.Link className="navs" href="">
             <Link to="/donateBlood">Donate Blood</Link>
           </Nav.Link>
           <Nav.Link className="navs" href="">
