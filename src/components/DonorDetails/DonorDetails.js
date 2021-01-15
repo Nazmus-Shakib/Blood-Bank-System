@@ -1,8 +1,29 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 const DonorDetails = (props) => {
-  const { name } = props.user;
+  const {
+    _id,
+    name,
+    blood,
+    age,
+    address,
+    gender,
+    phone,
+    donateDate,
+  } = props.user;
+
+  const deleteResident = (_id) => {
+    fetch(`http://localhost:5000/deleteDonor/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        //alert("Resident deleted successfully");
+      });
+    alert("Donor deleted successfully");
+    window.location.reload();
+  };
 
   return (
     <Card
@@ -10,7 +31,7 @@ const DonorDetails = (props) => {
       text="light"
       style={{
         width: "24rem",
-        height: "15rem",
+        height: "18rem",
         display: "inline-block",
         margin: "20px 0 20px 55px",
         boxShadow: "5px 2px 5px black",
@@ -18,14 +39,23 @@ const DonorDetails = (props) => {
     >
       <Card.Header></Card.Header>
       <Card.Body>
-        <Card.Title> Name: {name} </Card.Title>
+        <Card.Title> Name : {name} </Card.Title>
         <Card.Text>
-          Blood Group: <br />
-          Address: <br />
-          Amount of Donation: <br />
-          Donation Date: <br />
-          Phone:
+          Blood Group : <b>{blood}</b> <br />
+          Age : <b>{age}</b> <br />
+          Gender : <b>{gender}</b> <br />
+          Address : <b>{address}</b> <br />
+          Donation Date : <b>{donateDate}</b> <br />
+          Phone : <b>{phone}</b>
         </Card.Text>
+
+        <Button
+          onClick={() => deleteResident(_id)} // to avoid multiple click at the same time
+          className="ml-4"
+          variant="warning"
+        >
+          Delete Resident
+        </Button>
       </Card.Body>
     </Card>
   );

@@ -3,27 +3,32 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
 import "./SubmitDetails.css";
 import banner from "../../images/bg-image.jpg";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const SubmitDetails = () => {
-  //const [loggedInUser] = useContext(UserContext);
+  const [, , user, setUser] = useContext(UserContext);
   const { register, handleSubmit, errors } = useForm();
-  //const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  console.log(user);
 
   const onSubmit = (data) => {
-    // data.DOB = selectedDate;
+    data.donateDate = String(selectedDate).slice(3, 15);
     // data.salary = `RM ${data.salary}`;
     // data.houseRent = `RM ${data.houseRent}`;
-    // if (selectedDate) {
-    //   fetch("https://resident-information-system.herokuapp.com/submitDetails", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-    //   alert("Your Details has been Posted Successfully");
-    //   window.location.reload();
-    // }
+
+    fetch("http://localhost:5000/submitDetails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    alert("Your Details has been Posted Successfully");
+    //window.location.reload();
+
+    setUser(data);
   };
 
   return (
@@ -40,7 +45,6 @@ const SubmitDetails = () => {
             <input
               name="name"
               placeholder="Your Full Name (e.g: Nur Ain)"
-              //defaultValue={loggedInUser.name}
               ref={register({
                 pattern: /^[a-zA-Z]{2,40}( [a-zA-Z]{2,40})+$/,
               })}
@@ -86,10 +90,10 @@ const SubmitDetails = () => {
             <input
               name="address"
               placeholder="Home Address"
-              ref={register({ required: true })}
+              ref={register({ maxLength: 30 })}
             />
             {errors.address && (
-              <span className="error">Address is required</span>
+              <span className="error">Address not more than 30 characters</span>
             )}
 
             <input
@@ -100,6 +104,19 @@ const SubmitDetails = () => {
             {errors.phone && (
               <span className="error">Phone Number at least 10 digits</span>
             )}
+
+            <div style={{ width: "100px" }}>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                //dateFormat="dd/MM/yyyy"
+                maxDate={new Date()}
+                isClearable
+                showYearDropdown
+                scrollableMonthYearDropdown
+                placeholderText="Donation Date"
+              />
+            </div>
           </div>
 
           <input

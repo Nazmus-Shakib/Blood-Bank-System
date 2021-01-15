@@ -12,9 +12,10 @@ export const UserContext = createContext();
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
 
   return (
-    <UserContext.Provider value={[users, setUsers]}>
+    <UserContext.Provider value={[users, setUsers, user, setUser]}>
       <Router>
         <Header></Header>
         <Switch>
@@ -23,7 +24,7 @@ function App() {
             <Footer></Footer>
           </Route>
 
-          <Route path="/submit">
+          <Route path="/submitDetails">
             <SubmitDetails></SubmitDetails>
           </Route>
 

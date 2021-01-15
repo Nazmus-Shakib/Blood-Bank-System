@@ -9,7 +9,11 @@ const Header = () => {
     <div className="mb-5">
       <Navbar fixed="top" className="nav" bg="dark" variant="dark">
         <Navbar.Brand href="/home">
-          <img style={{ height: "60px", width: "110px" }} src={Logo} alt="" />
+          <img
+            style={{ height: "60px", width: "110px", marginLeft: "30px" }}
+            src={Logo}
+            alt=""
+          />
         </Navbar.Brand>
         <Nav className="ml-auto mr-4">
           <Nav.Link className="navs" href="">
@@ -19,7 +23,7 @@ const Header = () => {
             <Link to="/donateBlood">Donate Blood</Link>
           </Nav.Link>
           <Nav.Link className="navs" href="">
-            <Link to="/allDetails">Search Donor</Link>
+            <Link to="/allDetails">View Donors</Link>
           </Nav.Link>
           <Nav.Link className="navs" href="">
             Admin
