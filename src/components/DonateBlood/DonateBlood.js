@@ -36,9 +36,12 @@ const DonateBlood = () => {
         </>
       ) : donateBlood === true ? (
         <div className="pt-5 align-items-center text-center">
-          <h1>Congratulations {user.name}!</h1>
+          <h1>
+            Congratulations, {user.name} !!!{" "}
+            <span style={{ fontSize: "50px" }}>&#128519;</span>
+          </h1>
           <h2>We Appreciate Your Contribution</h2>
-          <h4>Thanks for joining this eminent cooperation</h4> <br />
+          <h4>Thanks for Joining this Eminent Cooperation</h4> <br />
           <h5>
             Here is your Giant Hyper Market 10% Discount Coupon Code :
             <span
@@ -69,13 +72,16 @@ const DonateBlood = () => {
         </div>
       ) : (
         <div className="pt-5 align-items-center text-center">
-          <h1>Welcome, {user.name}</h1>
+          <h1>
+            Welcome, {user.name}{" "}
+            <span style={{ fontSize: "50px" }}>&#128522;</span>
+          </h1>
           <h2>
-            Thanks for visiting <span style={{ color: "red" }}>Red Hope</span> -
+            Thanks for Visiting <span style={{ color: "red" }}>Red Hope</span> -
             Blood Bank Management System
           </h2>
-          <h3>Your Contribution is highly appreciated!!!</h3> <br />
-          <h4>Come back after your donation is completed!</h4>
+          <h3>Your Contribution is Highly Appreciated!!!</h3> <br />
+          <h4>Come back after Your Donation is Completed!</h4>
           <button
             className="btn btn-success mr-3 mt-4"
             onClick={() => couponGenerator()}

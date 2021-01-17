@@ -9,7 +9,7 @@
 }
 
 .nav .navs:hover {
-  background-color: lightseagreen;
+  background-color: darkmagenta;
   border-radius: 10px;
   cursor: pointer;
 }

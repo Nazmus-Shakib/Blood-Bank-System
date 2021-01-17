@@ -66,7 +66,7 @@ const AllDetails = () => {
       <div className="pl-5">
         <div className="row pb-3">
           <div className="col-lg-5 col-md-5 col-sm-12 pl-5">
-            <div className="residentNo">
+            <div className="residentNo d-flex">
               <h3>Total Donors: {users.length}</h3>
             </div>
           </div>

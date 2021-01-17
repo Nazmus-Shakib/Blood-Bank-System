@@ -2,21 +2,17 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
 import "./SubmitDetails.css";
-import banner from "../../images/bg-image.jpg";
+import banner from "../../images/banner.png";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const SubmitDetails = () => {
-  const [, , user, setUser] = useContext(UserContext);
+  const [, , , setUser] = useContext(UserContext);
   const { register, handleSubmit, errors } = useForm();
   const [selectedDate, setSelectedDate] = useState(null);
 
-  console.log(user);
-
   const onSubmit = (data) => {
     data.donateDate = String(selectedDate).slice(3, 15);
-    // data.salary = `RM ${data.salary}`;
-    // data.houseRent = `RM ${data.houseRent}`;
 
     fetch("http://localhost:5000/submitDetails", {
       method: "POST",
@@ -26,7 +22,6 @@ const SubmitDetails = () => {
       body: JSON.stringify(data),
     });
     alert("Your Details has been Posted Successfully");
-    //window.location.reload();
 
     setUser(data);
   };
@@ -36,10 +31,10 @@ const SubmitDetails = () => {
       <img style={{ width: "100%" }} src={banner} alt="" />
       <div className="align-items-center ">
         <form className="details-form " onSubmit={handleSubmit(onSubmit)}>
-          <h1 style={{ color: "LightGray" }}>Submit Personal Details</h1>
-          <p style={{ color: "white" }}>
+          <h1 style={{ color: "red" }}>Submit Personal Details</h1>
+          <h6 style={{ color: "red" }}>
             Please follow the placeholder format to submit Details
-          </p>
+          </h6>
 
           <div className="col-md-12 col-sm-12 col-xs-12 pl-5">
             <input
@@ -52,7 +47,7 @@ const SubmitDetails = () => {
             {errors.name && <span className="error">Name is required</span>}
 
             <div className="d-flex pt-3">
-              <h5 style={{ color: "white" }} className="pr-4">
+              <h5 style={{ color: "red" }} className="pr-4">
                 <b>Blood Group :</b>
               </h5>
               <select style={{ height: "30px" }} name="blood" ref={register}>
@@ -78,7 +73,7 @@ const SubmitDetails = () => {
             )}
 
             <div className="d-flex pt-3">
-              <h5 style={{ color: "white" }} className="pr-4">
+              <h5 style={{ color: "red" }} className="pr-4">
                 <b>Gender :</b>
               </h5>
               <select style={{ height: "30px" }} name="gender" ref={register}>
@@ -121,7 +116,7 @@ const SubmitDetails = () => {
 
           <input
             className="ml-5 mt-3"
-            style={{ backgroundColor: "MediumSlateBlue" }}
+            style={{ backgroundColor: "red" }}
             type="submit"
           />
         </form>

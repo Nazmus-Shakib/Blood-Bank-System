@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
+import { UserContext } from "../../App";
 
 const DonorDetails = (props) => {
   const {
@@ -12,6 +13,7 @@ const DonorDetails = (props) => {
     phone,
     donateDate,
   } = props.user;
+  const [, , , , realAdmin] = useContext(UserContext);
 
   const deleteResident = (_id) => {
     fetch(`http://localhost:5000/deleteDonor/${_id}`, {
@@ -21,8 +23,7 @@ const DonorDetails = (props) => {
       .then((result) => {
         //alert("Resident deleted successfully");
       });
-    alert("Donor deleted successfully");
-    window.location.reload();
+    alert("Donor deleted successfully !!!");
   };
 
   return (
@@ -49,13 +50,15 @@ const DonorDetails = (props) => {
           Phone : <b>{phone}</b>
         </Card.Text>
 
-        <Button
-          onClick={() => deleteResident(_id)} // to avoid multiple click at the same time
-          className="ml-4"
-          variant="warning"
-        >
-          Delete Resident
-        </Button>
+        {realAdmin === true && (
+          <Button
+            onClick={() => deleteResident(_id)}
+            className="ml-4"
+            variant="warning"
+          >
+            Delete Resident
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );

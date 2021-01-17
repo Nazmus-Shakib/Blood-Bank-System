@@ -7,21 +7,29 @@ import NoMatch from "./components/NoMatch/NoMatch";
 import AllDetails from "./components/AllDetails/AllDetails";
 import DonateBlood from "./components/DonateBlood/DonateBlood";
 import SubmitDetails from "./components/SubmitDetails/SubmitDetails";
+import LogInAdmin from "./components/LogInAdmin/LogInAdmin";
 
 export const UserContext = createContext();
 
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
+  const [realAdmin, setRealAdmin] = useState(false);
 
   return (
-    <UserContext.Provider value={[users, setUsers, user, setUser]}>
+    <UserContext.Provider
+      value={[users, setUsers, user, setUser, realAdmin, setRealAdmin]}
+    >
       <Router>
         <Header></Header>
         <Switch>
           <Route path="/home">
             <Home></Home>
             <Footer></Footer>
+          </Route>
+
+          <Route path="/admin">
+            <LogInAdmin></LogInAdmin>
           </Route>
 
           <Route path="/submitDetails">
