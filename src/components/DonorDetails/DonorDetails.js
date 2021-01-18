@@ -56,7 +56,7 @@ const DonorDetails = (props) => {
             className="ml-4"
             variant="warning"
           >
-            Delete Resident
+            Delete Donor
           </Button>
         )}
       </Card.Body>
