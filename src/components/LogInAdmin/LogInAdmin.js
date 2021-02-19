@@ -9,7 +9,7 @@ const LogInAdmin = () => {
   const [, , , , realAdmin, setRealAdmin] = useContext(UserContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/admin")
+    fetch("https://blood-bank-system-by-shakib.herokuapp.com/admin")
       .then((response) => response.json())
       .then((data) => {
         setAdmin(data[0]);

@@ -16,9 +16,12 @@ const DonorDetails = (props) => {
   const [, , , , realAdmin] = useContext(UserContext);
 
   const deleteResident = (_id) => {
-    fetch(`http://localhost:5000/deleteDonor/${_id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://blood-bank-system-by-shakib.herokuapp.com/deleteDonor/${_id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         //alert("Resident deleted successfully");

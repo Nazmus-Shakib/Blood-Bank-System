@@ -14,7 +14,7 @@ const SubmitDetails = () => {
   const onSubmit = (data) => {
     data.donateDate = String(selectedDate).slice(3, 15);
 
-    fetch("http://localhost:5000/submitDetails", {
+    fetch("https://blood-bank-system-by-shakib.herokuapp.com/submitDetails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

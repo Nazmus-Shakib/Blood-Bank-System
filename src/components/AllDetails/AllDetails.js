@@ -13,7 +13,7 @@ const AllDetails = () => {
   );
 
   const handleDataLoad = () => {
-    fetch("http://localhost:5000/donors")
+    fetch("https://blood-bank-system-by-shakib.herokuapp.com/donors")
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
